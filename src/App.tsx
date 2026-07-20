@@ -87,21 +87,21 @@ import {
 // Placeholder cho lúc đang loading từ Firestore
 const EMPTY_COMMUNE_ENTRY = {
   b1: {
-    total: 177,
-    dn_total: 154,
-    hkd_total: 11,
-    htx_total: 12,
-    dn_cds: 3,
+    total: 57,
+    dn_total: 56,
+    hkd_total: 1,
+    htx_total: 0,
+    dn_cds: 0,
     hkd_cds: 0,
     htx_cds: 0,
   },
   b2: {
-    total: 24,
-    ocop_total: 9,
-    ocop_3: 9,
-    ocop_4: 0,
+    total: 23,
+    ocop_total: 6,
+    ocop_3: 5,
+    ocop_4: 1,
     ocop_5: 0,
-    sp_thuong: 15,
+    sp_thuong: 17,
     dv: 0,
   },
 };
@@ -154,9 +154,9 @@ export default function App() {
   const [periodicData, setPeriodicData] = useState<Record<string, any>>({});
   const [communeData, setCommuneData] = useState<Record<string, any>>({});
 
-  // Dữ liệu xã Tân Hiệp từ Firestore (thay thế COMMUNE_DATA['X. Tân Hiệp'])
+  // Dữ liệu xã Thoại Sơn từ Firestore (thay thế COMMUNE_DATA['X. Thoại Sơn'])
   const currentZoneData = useMemo(() => {
-    return communeData['X. Tân Hiệp'] || EMPTY_COMMUNE_ENTRY;
+    return communeData['X. Thoại Sơn'] || EMPTY_COMMUNE_ENTRY;
   }, [communeData]);
 
   // Khởi tạo Firestore: seed nếu trống + lắng nghe realtime
@@ -436,7 +436,7 @@ export default function App() {
   const [aiChatHistory, setAiChatHistory] = useState([
     {
       role: 'assistant',
-      text: 'Xin chào Ban chỉ đạo Xã Tân Hiệp! Tôi là Trợ lý AI Điều Hành DECC. Tôi đã đối soát hoàn chỉnh cả 2 Tầng dữ liệu: Tầng 1 (Chuẩn Phường/Xã 2.0 - DEI 76%) và Tầng 2 (Hệ sinh thái Kinh tế số). Sẵn sàng đồng hành cùng lãnh đạo để phân tích mâu thuẫn hệ thống và ra quyết định chính xác nhất.',
+      text: 'Xin chào Ban chỉ đạo Xã Thoại Sơn! Tôi là Trợ lý AI Điều Hành DECC. Tôi đã đối soát hoàn chỉnh cả 2 Tầng dữ liệu: Tầng 1 (Chuẩn Phường/Xã 2.0 - DEI 76%) và Tầng 2 (Hệ sinh thái Kinh tế số). Sẵn sàng đồng hành cùng lãnh đạo để phân tích mâu thuẫn hệ thống và ra quyết định chính xác nhất.',
       timestamp: '07:41',
     },
   ]);
@@ -566,7 +566,7 @@ export default function App() {
         {
           parts: [
             {
-              text: 'Soạn một quyết định hành chính ngắn gọn để khắc phục điểm nghẽn đào tạo chuyển đổi số tại Xã Tân Hiệp.',
+              text: 'Soạn một quyết định hành chính ngắn gọn để khắc phục điểm nghẽn đào tạo chuyển đổi số tại Xã Thoại Sơn.',
             },
           ],
         },
@@ -584,7 +584,7 @@ export default function App() {
       );
     } catch (err) {
       setGeneratedIssuePolicy(
-        `**ỦY BAN NHÂN DÂN XÃ TÂN HIỆP**\n**QUYẾT ĐỊNH:**\nĐiều 1. Khẩn trương mở 5 khóa đào tạo công nghệ trong tháng này để giải quyết tình trạng thiếu hụt năng lực.`
+        `**ỦY BAN NHÂN DÂN XÃ THOẠI SƠN**\n**QUYẾT ĐỊNH:**\nĐiều 1. Khẩn trương mở 5 khóa đào tạo công nghệ trong tháng này để giải quyết tình trạng thiếu hụt năng lực.`
       );
     } finally {
       setIsGeneratingPolicy(false);
@@ -774,7 +774,7 @@ export default function App() {
             <div className="flex items-center gap-2">
               <span className="text-[10px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>{' '}
-                XÃ TÂN HIỆP - DECC COCKPIT
+                XÃ THOẠI SƠN - DECC COCKPIT
               </span>
             </div>
             <h1 className="text-xl md:text-2xl font-black tracking-tight bg-gradient-to-r from-white via-cyan-100 to-[#00C2FF] bg-clip-text text-transparent">
@@ -831,7 +831,7 @@ export default function App() {
               Địa bàn:
             </span>
             <span className="text-xs font-semibold text-cyan-400">
-              Xã Tân Hiệp
+              Xã Thoại Sơn
             </span>
           </div>
 
@@ -966,7 +966,7 @@ export default function App() {
                   <div className="flex items-center gap-2 mb-5">
                     <Building2 className="h-5 w-5 text-cyan-400" />
                     <span className="text-sm font-bold text-cyan-400 uppercase tracking-wide">
-                      B1: THÔNG TIN ĐƠN VỊ KINH DOANH - XÃ TÂN HIỆP
+                      B1: THÔNG TIN ĐƠN VỊ KINH DOANH - XÃ THOẠI SƠN
                     </span>
                   </div>
 
@@ -3289,11 +3289,11 @@ export default function App() {
           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
           <span>
             Hệ thống đồng bộ dữ liệu song song theo chuẩn bảo
-            mật IOC xã Tân Hiệp.
+            mật IOC xã Thoại Sơn.
           </span>
         </div>
         <div>
-          <span>© 2026 Ban Chỉ Đạo Chuyển Đổi Số Xã Tân Hiệp.</span>
+          <span>© 2026 Ban Chỉ Đạo Chuyển Đổi Số Xã Thoại Sơn.</span>
         </div>
       </footer>
     </div>
